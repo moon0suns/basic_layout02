@@ -1,0 +1,225 @@
+/* common에 전역적으로 쓸것 만듦 */
+* {}
+
+body {
+    overflow-x: hidden;
+}
+
+.wrap {
+    min-width: 1200px;
+}
+
+
+.header {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.header a {
+    display: block;
+}
+
+.header .menu_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100px;
+}
+
+.gnb>ul {
+    display: flex;
+    gap: 40px
+}
+
+.gnb>ul a {
+    font-size: 18px;
+
+    /* 메뉴 글자 줄바꿈안되게 */
+    white-space: nowrap;
+}
+
+
+
+.main_visual {
+    position: relative;
+    height: 700px;
+    min-width: 1900px;
+    background: url(../images/main_slider01.jpg) no-repeat center top/cover;
+
+}
+
+.main_visual .silde_wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0 0 0 -585px;
+    transform: translate(0, -50%);
+    width: 600px;
+    height: 400px;
+}
+
+.main_visual .main_slide .itm {
+    height: 350px;
+}
+
+.main_visual .main_slide h3 {
+    font-size: 90px;
+    font-weight: 900;
+    background: linear-gradient(to right top, #0a96ba, #032777, #333333);
+    color: transparent;
+    -webkit-background-clip: text;
+    text-shadow: 1px 0 3px rgba(255, 255, 255, 0.25);
+    margin: 0 0 50px 0;
+}
+
+.main_visual .main_slide strong {
+    display: block;
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    font-weight: 300;
+    color: tomato;
+}
+
+/* 도트 스타일링 */
+.main_visual .main_slide .slick-dots {
+    position: absolute;
+    top: -30px;
+    left: 0;
+}
+
+.main_visual .main_slide .slick-dots li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #ddd;
+    margin: 0 4px 0 0;
+
+    cursor: pointer;
+}
+
+.main_visual .main_slide .slick-dots li.slick-active {
+    background: #0a96ba;
+}
+
+.main_visual .main_slide .slick-dots li button {
+    display: none;
+}
+
+.main_visual .main_slogan {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin: 0 0 0 30px;
+}
+
+
+
+
+/* 2 */
+
+/* 배경 반만 깔기 */
+.main_content {
+    background: linear-gradient(transparent 50%, #f9f9f9 50%);
+}
+
+.main_content .content {
+    display: flex;
+    gap: 30px;
+}
+
+/* 컨텐츠 한칸씩 차지하게 */
+.main_content .content>* {
+    position: relative;
+    flex: 1;
+}
+
+.main_content .content .img_box {
+    margin: 0 0 20px 0;
+    border-radius: 60px 0;
+    overflow: hidden;
+    /* 이미지는 인라인이라서 박스를 빗겨나가서 해주기 */
+}
+
+.main_content .content h3 {
+    font-size: 18px;
+    font-weight: 500;
+
+}
+
+.main_content .content h3::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 1px;
+    background: #ffbbbb;
+    margin: 10px 0 20px 0;
+}
+
+.main_content .content h3::before {
+    content: "MORE";
+    position: absolute;
+    top: 230px;
+    right: 60px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(161, 243, 85, 0.534);
+    transform: translate(0, -50%);
+    color: #fff;
+    font-size: 12px;
+
+    /* more글자 원안에 넣기 */
+    line-height: 60px;
+    /* 라인하이트를 박스 크기만큼 똑같이 주면 박스높이만큼 감 */
+    text-align: center;
+}
+
+.main_content .content p {
+    font-size: 14px;
+}
+
+/* END */
+
+.footer {
+    border-bottom: 1px solid #ddd;
+    background: #ddd;
+    padding: 30px 0 50px 0;
+    text-align: center;
+}
+
+.footer address {
+    margin: 0 0 10px 0;
+}
+
+.footer .footer_customer {
+    margin: 0 0 10px 0;
+    font-size: 0;
+}
+
+.footer .footer_customer li {
+    display: inline-block;
+    font-size: 15px;
+}
+
+.footer .footer_customer li~li::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 11px;
+    background: #ccc;
+    margin: 0 10px;
+}
+
+@media (max-width: 1200px) {
+    .tel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #ff6347;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 20px;
+    }
+}
