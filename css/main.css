@@ -9,7 +9,115 @@ body {
     min-width: 1200px;
 }
 
+@media (max-width: 768px) {
 
+    body {
+        overflow-x: visible;
+    }
+
+    .wrap {
+        min-width: 0;
+    }
+}
+
+.mobile_btn {
+    display: none;
+}
+
+
+
+@media (max-width: 768px) {
+
+    /* 📳 모바일 */
+    .mobile_btn {
+        display: block;
+
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        z-index: 999;
+        /* 내려가면 가려져서 젵인덱스 */
+
+        width: 30px;
+        height: 30px;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        /* 원안만들때 %말고 px로 주기 */
+        cursor: pointer;
+    }
+
+    .mobile_btn::before {
+        content: "";
+        position: absolute;
+        top: 7px;
+        left: 5px;
+        right: 5px;
+        height: 2px;
+        background: #333;
+    }
+
+
+    .mobile_btn::after {
+        content: "";
+        position: absolute;
+        bottom: 7px;
+        left: 5px;
+        right: 5px;
+        height: 2px;
+        background: #333;
+    }
+
+    .mobile_btn.on::before {
+        display: none;
+    }
+
+    .mobile_btn.on::after {
+        display: none;
+    }
+
+    .mobile_btn button {
+        border: none;
+        background: transparent;
+        /* 배경빼기 */
+        outline: none;
+    }
+
+    .mobile_btn button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        right: 5px;
+        height: 2px;
+        background: #333;
+        /* 가운데아니라서 트랜스폼 */
+        transform: translate(0, -50%);
+        transition: 0.5s;
+    }
+
+    .mobile_btn button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        right: 5px;
+        height: 2px;
+        background: #333;
+        transform: translate(0, -50%);
+        transition: 0.5s;
+    }
+
+    .mobile_btn.on button::before {
+        transform: translate(0, -50%) rotate(45deg)
+    }
+
+    .mobile_btn.on button::after {
+        transform: translate(0, -50%) rotate(-45deg)
+    }
+}
+
+/* 👩🏻 */
 .header {
     border-bottom: 1px solid #f2f2f2;
 }
@@ -22,8 +130,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     height: 100px;
+}
+
+@media (max-width:768px) {
+    h1.on {
+        /* 로고보이게 */
+        position: fixed;
+        z-index: 1000;
+    }
 }
 
 .gnb>ul {
@@ -33,12 +148,62 @@ body {
 
 .gnb>ul a {
     font-size: 18px;
-
     /* 메뉴 글자 줄바꿈안되게 */
     white-space: nowrap;
 }
 
+@media(max-width:768px) {
+    .gnb {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 999;
 
+        background: #fff;
+        border-right: 1px solid #ddd;
+        width: calc(100% - 90px);
+        height: 100vh;
+        /* vh 뷰포트 꽉채움 */
+
+        padding: 150px 30px 0 30px;
+    }
+
+    .gnb.on {
+        left: 0;
+    }
+
+    .gnb>ul {
+        display: flex;
+        flex-direction: column;
+        /* 플렉스방향바꾸기 */
+        gap: 0;
+    }
+
+    .gnb>ul>li {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .gnb>ul a {
+        font-size: 15px;
+        padding: 10px 0;
+    }
+
+    .gnb>ul>li>a::after {
+        content: "\e907";
+        display: block;
+        line-height: 1;
+        /* 백그라운드 블록요소 주고 아이콘하나씩 배경 라인하이트줘서 만듦 */
+        padding: 2px;
+        float: right;
+        font-family: xeicon;
+        font-size: 10px;
+        background: #f9f9f9;
+    }
+}
+
+
+
+/* 👀 */
 
 .main_visual {
     position: relative;
@@ -55,7 +220,6 @@ body {
     margin: 0 0 0 -585px;
     transform: translate(0, -50%);
     width: 600px;
-    height: 400px;
 }
 
 .main_visual .main_slide .itm {
@@ -112,10 +276,45 @@ body {
     margin: 0 0 0 30px;
 }
 
+@media (max-width:768px) {
+
+    .main_visual {
+        position: relative;
+        height: calc(100vh - 100px);
+        min-width: 0;
+        background: url(../images/main_slider01.jpg) no-repeat right top/cover;
+    }
+
+    .main_visual .silde_wrap {
+        position: absolute;
+        top: auto;
+        bottom: 100px;
+        left: 0;
+        margin: 0 0 0 0;
+        transform: translate(0, 0);
+        width: 100%;
+        padding: 0 30px;
+
+    }
+
+    .main_visual .main_slide .itm {
+        height: 300px;
+    }
+
+    .main_visual .main_slide h3 {
+        font-size: 12vw;
+        font-weight: 900;
+        text-shadow: 1px 0 3px rgba(255, 255, 255, 0.25);
+        margin: 0 0 40px 0;
+    }
+
+    .main_visual .main_slogan {
+        display: none;
+    }
+}
 
 
-
-/* 2 */
+/* 1️⃣ */
 
 /* 배경 반만 깔기 */
 .main_content {
@@ -151,7 +350,7 @@ body {
     display: block;
     width: 70px;
     height: 1px;
-    background: #ffbbbb;
+    background: #3c9240;
     margin: 10px 0 20px 0;
 }
 
@@ -178,7 +377,16 @@ body {
     font-size: 14px;
 }
 
-/* END */
+@media (max-width:768px) {
+    .main_content .content {
+        flex-direction: column;
+        gap: 60px;
+    }
+}
+
+
+
+/* 🦶🏻END */
 
 .footer {
     border-bottom: 1px solid #ddd;
@@ -210,16 +418,20 @@ body {
     margin: 0 10px;
 }
 
-@media (max-width: 1200px) {
-    .tel {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: #ff6347;
-        color: #fff;
-        text-align: center;
-        padding: 10px 0;
-        font-size: 20px;
+@media (max-width:768px) {
+
+    .footer .footer_customer {
+        margin: 0 0 10px 0;
+        font-size: 0;
+    }
+
+    .footer .footer_customer li {
+        display: block;
+        margin: 0 0 5px 0;
+    }
+
+
+    .footer .footer_customer li~li::before {
+        display: none;
     }
 }
